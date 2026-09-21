@@ -1,0 +1,11 @@
+{
+  "title": "RSNA Knee DINOv2 baseline assets",
+  "id": "rikky1201/rsna-knee-dinov2-baseline-assets",
+  "subtitle": "preprocessing/pooling/feature_extraction code (DINOv2, RadImageNet)",
+  "description": "expA01_dinov2_baseline の前処理・pooling・特徴抽出コード。Source: workspace/expA01_dinov2_baseline/src/",
+  "isPrivate": true,
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": [],
+  "collaborators": [],
+  "data": []
+}

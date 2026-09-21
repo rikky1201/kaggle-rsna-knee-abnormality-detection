@@ -1,0 +1,52 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+2026-09-15 22:06:48,033 | INFO | GPU: Tesla T4
+
+2026-09-15 22:06:48,033 | INFO | GPU: Tesla T4
+2026-09-15 22:06:48,068 | INFO | competition dir: /kaggle/input/competitions/rsna-knee-abnormality-detection
+
+2026-09-15 22:06:48,068 | INFO | competition dir: /kaggle/input/competitions/rsna-knee-abnormality-detection
+2026-09-15 22:06:48,068 | INFO | assets dir: /kaggle/input/datasets/rikky1201/rsna-knee-dinov2-baseline-assets
+
+2026-09-15 22:06:48,068 | INFO | assets dir: /kaggle/input/datasets/rikky1201/rsna-knee-dinov2-baseline-assets
+2026-09-15 22:06:48,069 | INFO | dinov2 weights dir: /kaggle/input/datasets/rikky1201/dinov2-base-weights-offline
+
+2026-09-15 22:06:48,069 | INFO | dinov2 weights dir: /kaggle/input/datasets/rikky1201/dinov2-base-weights-offline
+2026-09-15 22:06:48,134 | INFO | labels (12): ['ACL', 'MCL', 'Medial Meniscus', 'Lateral Meniscus', 'Medial OA', 'Lateral OA', 'PF OA', 'Effusion', 'Synovitis', "Baker's", 'Contusion', 'Fracture']
+
+2026-09-15 22:06:48,134 | INFO | labels (12): ['ACL', 'MCL', 'Medial Meniscus', 'Lateral Meniscus', 'Medial OA', 'Lateral OA', 'PF OA', 'Effusion', 'Synovitis', "Baker's", 'Contusion', 'Fracture']
+The image processor of type `BitImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+
+The image processor of type `BitImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+2026-09-15 22:07:16,877 | INFO | DINOv2-base�i�I�t���C���d�݁j���[�h����: embed_dim=768
+
+2026-09-15 22:07:16,877 | INFO | DINOv2-base�i�I�t���C���d�݁j���[�h����: embed_dim=768
+2026-09-15 22:07:16,923 | INFO | test����: 3
+
+2026-09-15 22:07:16,923 | INFO | test����: 3
+2026-09-15 22:07:16,931 | INFO | [1/3] 1.2.826.0.1.3680043.8.498.10047035057544427318018579121635276191 ��������...
+
+2026-09-15 22:07:16,931 | INFO | [1/3] 1.2.826.0.1.3680043.8.498.10047035057544427318018579121635276191 ��������...
+2026-09-15 22:07:34,657 | INFO | [2/3] 1.2.826.0.1.3680043.8.498.10062861783145312629332250977456991776 ��������...
+
+2026-09-15 22:07:34,657 | INFO | [2/3] 1.2.826.0.1.3680043.8.498.10062861783145312629332250977456991776 ��������...
+2026-09-15 22:07:40,966 | INFO | [3/3] 1.2.826.0.1.3680043.8.498.10067514707072572280263481548497591402 ��������...
+
+2026-09-15 22:07:40,966 | INFO | [3/3] 1.2.826.0.1.3680043.8.498.10067514707072572280263481548497591402 ��������...
+2026-09-15 22:07:45,991 | INFO | submission.csv ��ۑ����܂���: /kaggle/working/submission.csv (3�s)
+
+2026-09-15 22:07:45,991 | INFO | submission.csv ��ۑ����܂���: /kaggle/working/submission.csv (3�s)
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 29316 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 326765 bytes to __results__.html

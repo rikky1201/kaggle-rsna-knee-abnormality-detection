@@ -1,0 +1,13 @@
+{
+  "id": "rikky1201/qwen2-5-14b-report-pseudolabel-generation",
+  "title": "Qwen2.5-14B report pseudolabel generation",
+  "code_file": "pseudolabel_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["rikky1201/rsna-knee-report-labeler-assets"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

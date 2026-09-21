@@ -1,0 +1,16 @@
+{
+  "id": "rikky1201/rsna-knee-v4-expa01-attention-pooling-submission",
+  "title": "RSNA knee v4 expA01 attention pooling submission",
+  "code_file": "inference_notebook_attention.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "rikky1201/rsna-knee-dinov2-baseline-assets",
+    "rikky1201/dinov2-base-weights-offline"
+  ],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}

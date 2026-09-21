@@ -1,0 +1,42 @@
+# attention pooling版（Gated Attentionでslice→series集約を置き換え）の学習設定
+# config.yaml（mean+max版）と条件を揃え、pooling方式のみ変えて比較する
+
+seed: 42
+
+experiment:
+  name: expA01_attention_probe   # 出力先: results/{name}/fold{N}/（mean+max版のexpA01_linear_probeとは別ディレクトリ）
+
+paths:
+  output_dir: results
+
+data:
+  labels_csv: ../expA00_report_labeler_validation/data/train_full_labels_4407.csv
+  reliability_csv: ../expA00_report_labeler_validation/data/pseudo_label_reliability.csv
+  slice_features_npz: data/dinov2_base_slice_features_4407.npz
+  folds_csv: ../fold/v1_multilabel_gold58/folds.csv
+  fold: 0
+  num_folds: 4
+
+model:
+  embed_dim: 768
+  num_classes: 12
+  attn_hidden_dim: 128
+  standardize: true   # slice単位DINOv2特徴をtrain側studyの統計量で標準化する（study単位mean+max版のstandardizeと同じ原則）
+
+optimizer:
+  name: adamw
+  lr: 1.0e-3
+  weight_decay: 1.0e-2
+
+scheduler:
+  name: cosine
+  min_lr: 1.0e-6
+
+trainer:
+  max_epochs: 100
+  batch_size: 32       # study単位のミニバッチ（forward_studyをbatch_size回ループしてから1回backward/step）
+  precision: 16-mixed  # AMP有効。CUDA無しの環境では自動的にfp32にフォールバックする
+  accelerator: auto
+  early_stopping_patience: 20
+  ckpt_path: null
+  full_fixed_epochs: null   # train_full_attention.py用（比較で改善が確認できてから実装）

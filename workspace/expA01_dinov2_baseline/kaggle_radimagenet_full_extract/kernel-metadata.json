@@ -1,0 +1,13 @@
+{
+  "id": "rikky1201/radimagenet-resnet50-feature-extraction-full",
+  "title": "RadImageNet ResNet50 feature extraction full",
+  "code_file": "extract_features_full_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["rikky1201/rsna-knee-dinov2-baseline-assets", "rikky1201/radimagenet-resnet50-weights"],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}

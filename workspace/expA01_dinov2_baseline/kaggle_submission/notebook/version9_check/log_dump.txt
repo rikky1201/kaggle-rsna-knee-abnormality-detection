@@ -1,0 +1,75 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+2026-09-16 08:50:58,351 | INFO | GPU: Tesla T4
+
+2026-09-16 08:50:58,351 | INFO | GPU: Tesla T4
+2026-09-16 08:50:58,390 | INFO | competition dir: /kaggle/input/competitions/rsna-knee-abnormality-detection
+
+2026-09-16 08:50:58,390 | INFO | competition dir: /kaggle/input/competitions/rsna-knee-abnormality-detection
+2026-09-16 08:50:58,391 | INFO | assets dir: /kaggle/input/datasets/rikky1201/rsna-knee-dinov2-baseline-assets
+
+2026-09-16 08:50:58,391 | INFO | assets dir: /kaggle/input/datasets/rikky1201/rsna-knee-dinov2-baseline-assets
+2026-09-16 08:50:58,392 | INFO | dinov2 weights dir: /kaggle/input/datasets/rikky1201/dinov2-base-weights-offline
+
+2026-09-16 08:50:58,392 | INFO | dinov2 weights dir: /kaggle/input/datasets/rikky1201/dinov2-base-weights-offline
+2026-09-16 08:50:58,392 | INFO | radimagenet weights dir: /kaggle/input/radimagenet-resnet50-weights
+
+2026-09-16 08:50:58,392 | INFO | radimagenet weights dir: /kaggle/input/radimagenet-resnet50-weights
+2026-09-16 08:50:58,783 | INFO | labels (12): ['ACL', 'MCL', 'Medial Meniscus', 'Lateral Meniscus', 'Medial OA', 'Lateral OA', 'PF OA', 'Effusion', 'Synovitis', "Baker's", 'Contusion', 'Fracture']
+
+2026-09-16 08:50:58,783 | INFO | labels (12): ['ACL', 'MCL', 'Medial Meniscus', 'Lateral Meniscus', 'Medial OA', 'Lateral OA', 'PF OA', 'Effusion', 'Synovitis', "Baker's", 'Contusion', 'Fracture']
+2026-09-16 08:50:58,784 | INFO | RadImageNet�̗p��: ['Effusion', 'Synovitis'] / DINOv2�̗p��: ['ACL', "Baker's", 'Contusion', 'Fracture', 'Lateral Meniscus', 'Lateral OA', 'MCL', 'Medial Meniscus', 'Medial OA', 'PF OA']
+
+2026-09-16 08:50:58,784 | INFO | RadImageNet�̗p��: ['Effusion', 'Synovitis'] / DINOv2�̗p��: ['ACL', "Baker's", 'Contusion', 'Fracture', 'Lateral Meniscus', 'Lateral OA', 'MCL', 'Medial Meniscus', 'Medial OA', 'PF OA']
+The image processor of type `BitImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+
+The image processor of type `BitImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+2026-09-16 08:51:24,922 | INFO | DINOv2-base�i�I�t���C���d�݁j���[�h����: embed_dim=768
+
+2026-09-16 08:51:24,922 | INFO | DINOv2-base�i�I�t���C���d�݁j���[�h����: embed_dim=768
+2026-09-16 08:51:25,987 | INFO | RadImageNet-ResNet50�i�I�t���C���d�݁j���[�h����: embed_dim=2048
+
+2026-09-16 08:51:25,987 | INFO | RadImageNet-ResNet50�i�I�t���C���d�݁j���[�h����: embed_dim=2048
+2026-09-16 08:51:26,035 | INFO | test����: 3
+
+2026-09-16 08:51:26,035 | INFO | test����: 3
+2026-09-16 08:51:26,044 | INFO | [1/3] 1.2.826.0.1.3680043.8.498.10047035057544427318018579121635276191 ��������...
+
+2026-09-16 08:51:26,044 | INFO | [1/3] 1.2.826.0.1.3680043.8.498.10047035057544427318018579121635276191 ��������...
+2026-09-16 08:51:42,971 | INFO | [2/3] 1.2.826.0.1.3680043.8.498.10062861783145312629332250977456991776 ��������...
+
+2026-09-16 08:51:42,971 | INFO | [2/3] 1.2.826.0.1.3680043.8.498.10062861783145312629332250977456991776 ��������...
+2026-09-16 08:51:49,031 | INFO | [3/3] 1.2.826.0.1.3680043.8.498.10067514707072572280263481548497591402 ��������...
+
+2026-09-16 08:51:49,031 | INFO | [3/3] 1.2.826.0.1.3680043.8.498.10067514707072572280263481548497591402 ��������...
+2026-09-16 08:51:54,445 | INFO | submission.csv ��ۑ����܂���: /kaggle/working/submission.csv (3�s)
+
+2026-09-16 08:51:54,445 | INFO | submission.csv ��ۑ����܂���: /kaggle/working/submission.csv (3�s)
+                                    StudyInstanceUID       ACL       MCL  \
+0  1.2.826.0.1.3680043.8.498.10047035057544427318...  0.213060  0.150033   
+1  1.2.826.0.1.3680043.8.498.10062861783145312629...  0.823482  0.600663   
+2  1.2.826.0.1.3680043.8.498.10067514707072572280...  0.157402  0.435778   
+
+   Medial Meniscus  Lateral Meniscus  Medial OA  Lateral OA     PF OA  \
+0         0.331597          0.291280   0.623303    0.637896  0.409878   
+1         0.487108          0.297178   0.651663    0.522874  0.434856   
+2         0.453073          0.450719   0.512077    0.481626  0.785547   
+
+   Effusion  Synovitis   Baker's  Contusion  Fracture  
+0  0.484301   0.643340  0.576065   0.512406  0.491651  
+1  0.408738   0.466555  0.275159   0.519889  0.340352  
+2  0.382979   0.342046  0.335093   0.332250  0.444506  
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 33102 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 337498 bytes to __results__.html

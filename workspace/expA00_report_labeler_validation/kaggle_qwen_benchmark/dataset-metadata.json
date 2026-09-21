@@ -1,0 +1,11 @@
+{
+  "title": "RSNA Knee report-labeler assets",
+  "id": "rikky1201/rsna-knee-report-labeler-assets",
+  "subtitle": "prompt_template.py (v2_fewshot) + metrics.py + validation_58.csv",
+  "description": "report-labeler benchmark assets. Source: workspace/expA00_report_labeler_validation/. prompt_template.py = v2_fewshot judging rules (single source of truth shared with the Claude Opus 5 baseline run), validation_58.csv = 58 gold-labeled studies extracted from train.csv, metrics.py = shared evaluation code identical to the one used for the Claude Opus 5 baseline (macro F1 0.733).",
+  "isPrivate": true,
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": ["rsna", "report-labeler"],
+  "collaborators": [],
+  "data": []
+}

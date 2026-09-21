@@ -1,0 +1,16 @@
+{
+  "id": "rikky1201/radimagenet-finetune-timing-benchmark",
+  "title": "RadImageNet finetune timing benchmark",
+  "code_file": "radimagenet_finetune_benchmark_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "rikky1201/rsna-knee-dinov2-baseline-assets",
+    "rikky1201/radimagenet-resnet50-weights"
+  ],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}

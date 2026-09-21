@@ -1,0 +1,11 @@
+{
+  "title": "RSNA Knee DINOv2-base features",
+  "id": "rikky1201/rsna-knee-dinov2-base-features",
+  "subtitle": "Frozen DINOv2-base study-level features (4405/4407 studies, dim=10759)",
+  "description": "expA01_dinov2_baseline で全4,407件（2件はDICOM破損により失敗）に対して抽出した、凍結DINOv2-baseによるstudy単位の特徴ベクトル。前処理(percentile clip正規化+スライス間引き)→ slice→series(mean+max pooling)→ series→study(Anatomical_Plane×Fluid_Sensitive 7スロット pooling, Fat_Suppressionスカラー付加)のパイプラインを通した後の最終特徴。dinov2_base_features_4405.npz に study_uids(4405,) と features(4405,10759) を格納。extraction_manifest.json に失敗2件の詳細あり。Source: workspace/expA01_dinov2_baseline/",
+  "isPrivate": true,
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": [],
+  "collaborators": [],
+  "data": []
+}

@@ -1,0 +1,42 @@
+# linear probe 分類ヘッドの学習設定
+# KAGGLE_DIRECTION.md「モデル設計方針」§2+6（損失関数）, §fold設計 に対応
+
+seed: 42
+
+experiment:
+  name: expA01_linear_probe   # 出力先: results/{name}/fold{N}/
+
+paths:
+  output_dir: results          # train.py からの相対パス
+
+data:
+  labels_csv: ../expA00_report_labeler_validation/data/train_full_labels_4407.csv
+  reliability_csv: ../expA00_report_labeler_validation/data/pseudo_label_reliability.csv
+  features_npz: data/dinov2_base_features_4405.npz
+  folds_csv: ../fold/v1_multilabel_gold58/folds.csv
+  fold: 0            # 実行するfold番号（0-3）。全fold回すときはrun_all_folds.shで上書きする
+  num_folds: 4
+  num_workers: 0      # 特徴はメモリ上のnumpy配列のためディスクI/Oなし。0で十分
+
+model:
+  input_dim: 10759    # 7スロット × (2×768+1)
+  num_classes: 12
+  standardize: true   # trainデータの統計量で特徴を標準化する
+
+optimizer:
+  name: adamw
+  lr: 1.0e-3
+  weight_decay: 1.0e-2
+
+scheduler:
+  name: cosine
+  min_lr: 1.0e-6
+
+trainer:
+  max_epochs: 100
+  batch_size: 128
+  precision: 16-mixed   # AMP有効。CUDA無しの環境では自動的にfp32にフォールバックする
+  accelerator: auto      # cudaがあれば使う、無ければcpu
+  early_stopping_patience: 20   # val macro AUC が改善しないepoch数
+  ckpt_path: null        # 再開用チェックポイントパス（例: results/expA01_linear_probe/fold0/last.ckpt）
+  full_fixed_epochs: 5   # train_full.py用: 4fold CVのbest_epoch中央値（検証データが無いためearly stopping不可。backboneごとに異なるためCLIで上書きする）

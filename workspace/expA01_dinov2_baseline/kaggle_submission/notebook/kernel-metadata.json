@@ -1,0 +1,17 @@
+{
+  "id": "rikky1201/rsna-knee-v1-expa01-linear-probe-submission",
+  "title": "RSNA knee v1 expA01 linear probe submission",
+  "code_file": "inference_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "rikky1201/rsna-knee-dinov2-baseline-assets",
+    "rikky1201/dinov2-base-weights-offline",
+    "rikky1201/radimagenet-resnet50-weights"
+  ],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}

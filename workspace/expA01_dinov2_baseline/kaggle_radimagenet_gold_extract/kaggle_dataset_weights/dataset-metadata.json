@@ -1,0 +1,11 @@
+{
+  "title": "RadImageNet ResNet50 weights (offline)",
+  "id": "rikky1201/radimagenet-resnet50-weights",
+  "subtitle": "RadImageNet ResNet50 notop weights (PyTorch port)",
+  "description": "RadImageNet公式ResNet50重み(notop)のPyTorch移植版。Source: https://github.com/Warvito/radimagenet-models （state_dictはhttps://github.com/BMEII-AI/RadImageNet 公式重みのPyTorch変換）。expA01_dinov2_baselineでのバックボーン比較実験（DINOv2 vs RadImageNet）用。",
+  "isPrivate": true,
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": [],
+  "collaborators": [],
+  "data": []
+}

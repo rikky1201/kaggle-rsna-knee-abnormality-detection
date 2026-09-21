@@ -1,0 +1,11 @@
+{
+  "title": "DINOv2 base weights offline",
+  "id": "rikky1201/dinov2-base-weights-offline",
+  "subtitle": "facebook/dinov2-base offline weights for submission",
+  "description": "Code Competition提出用。facebook/dinov2-base (HuggingFace transformers) をローカルでダウンロードしsave_pretrained()で保存したもの。config.json/model.safetensors/preprocessor_config.jsonを含み、AutoModel.from_pretrained(local_path)でインターネット無しにロードできる。",
+  "isPrivate": true,
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": [],
+  "collaborators": [],
+  "data": []
+}

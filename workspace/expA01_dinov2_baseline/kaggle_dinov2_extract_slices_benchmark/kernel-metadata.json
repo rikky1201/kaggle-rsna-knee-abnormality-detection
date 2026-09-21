@@ -1,0 +1,13 @@
+{
+  "id": "rikky1201/dinov2-slice-feature-extraction-benchmark",
+  "title": "DINOv2 slice feature extraction benchmark",
+  "code_file": "extract_slices_benchmark_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["rikky1201/rsna-knee-dinov2-baseline-assets"],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}

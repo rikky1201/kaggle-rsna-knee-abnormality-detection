@@ -1,0 +1,20 @@
+{
+  "model_size": "base",
+  "embed_dim": 768,
+  "chunk_size": 200,
+  "n_total": 4407,
+  "n_done": 4405,
+  "n_failed": 2,
+  "failed_uids": [
+    {
+      "study_uid": "1.2.826.0.1.3680043.8.498.34685905030370793639196564723935583035",
+      "error": "The number of bytes of pixel data is less than expected (409600 vs 819200 bytes) - the dataset may be corrupted, have an invalid group 0028 element value, or the transfer syntax may be incorrect"
+    },
+    {
+      "study_uid": "1.2.826.0.1.3680043.8.498.37833587429731221455928642963031995680",
+      "error": "The number of bytes of pixel data is less than expected (173056 vs 346112 bytes) - the dataset may be corrupted, have an invalid group 0028 element value, or the transfer syntax may be incorrect"
+    }
+  ],
+  "total_sec": 33284.81260228157,
+  "mean_sec_per_study": 7.552714454795002
+}

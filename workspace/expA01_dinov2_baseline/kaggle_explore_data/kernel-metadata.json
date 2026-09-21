@@ -1,0 +1,13 @@
+{
+  "id": "rikky1201/rsna-knee-explore-data-structure",
+  "title": "RSNA Knee explore data structure",
+  "code_file": "explore_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}
