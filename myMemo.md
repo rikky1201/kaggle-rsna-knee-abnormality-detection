@@ -3,11 +3,9 @@
 このファイルは自分のメモを残すためのものです。
 
 ## メモ
-Obsidianにそのまま貼れる形でまとめます。
 
----
 
-## RSNA Knee Discussion — Efficiency LB上位者からの知見
+### RSNA Knee Discussion — Efficiency LB上位者からの知見
 
 **情報源**：Efficiency LB上位者による、1ヶ月にわたる複数のDiscussionコメント（[Best single-model score](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/discussion/735304)、[9h runtime question](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/discussion/740474)、[Maybe worth checking the Efficiency LB?](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/discussion/736678)）。誇張の動機が薄く、本人が繰り返し自分の限界を認めている点で信頼度が高い情報源と判断。
 
