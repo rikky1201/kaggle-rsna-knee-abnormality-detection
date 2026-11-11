@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # RunPod 疎通テスト: 最安GPUで 起動→RUNNING待ち→接続情報表示。Network Volume なし（月額回避）。
-# --stop-after で自動停止の保険つき。鍵は リポジトリ直下 .runpod.env から読む（RUNPOD_API_KEY）。
+# ★CLI側の自動停止フラグ(--stop-after)は廃止済み（README §9）。使い終わったら必ず teardown を呼ぶこと。
+# 鍵は リポジトリ直下 .runpod.env から読む（RUNPOD_API_KEY）。
 # 使い方:
 #   bash tools/runpod/smoke_test.sh                       # 起動（★課金開始。数分で teardown すれば数円）
 #   bash tools/runpod/smoke_test.sh "NVIDIA A100-SXM4-80GB"  # GPU指定
@@ -29,12 +30,13 @@ fi
 
 GPU="${1:-NVIDIA RTX A5000}"
 POD_NAME="smoke-test-$(date +%s)"   # ★一意な名前（固定名だと再実行時に既存podと衝突して誤検出する）
-STOP_AT="$(date -u -d '+2 hours' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || true)"
-echo "[create] name=$POD_NAME gpu='$GPU' stop-after=${STOP_AT:-none}  (★課金開始)"
+# ★runpodctl 2.14.0で実機確認: --stop-after / --terminate-after は pod create から削除済み
+#   （"unknown flag" で create 自体が失敗する。README初版はv2.3.0時点の仕様で書かれていた）。
+#   CLI側の自動停止フラグは無くなったため、teardownは呼び出し側の責任で必ず行うこと（§9参照）
+echo "[create] name=$POD_NAME gpu='$GPU'  (★課金開始。CLI側の自動停止フラグは無いので手動teardown必須)"
 # ★公式テンプレ必須（bare --image だと常駐プロセスが無く即EXITEDになる。GUIはテンプレ使用）
 ARGS=(pod create --name "$POD_NAME" --gpu-id "$GPU" --cloud-type SECURE
       --template-id "${TEMPLATE_ID:-runpod-torch-v280}" --container-disk-in-gb 20)
-[ -n "$STOP_AT" ] && ARGS+=(--stop-after "$STOP_AT")
 # ★create 出力から pod ID を即確保（EXITED になると `pod list` に出ず「課金中なのに ID 不明」になる）
 CREATE_OUT="$($RPCTL "${ARGS[@]}" 2>&1)" || { echo "$CREATE_OUT"; echo "[FATAL] pod create 失敗"; exit 1; }
 echo "$CREATE_OUT"

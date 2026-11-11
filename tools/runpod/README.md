@@ -125,8 +125,7 @@ runpodctl billing     課金履歴
 | `--env` | 環境変数（**JSON文字列**）。Secret参照を渡せる（§5） |
 | `--ports` | 公開ポート `'8888/http,22/tcp'` |
 | `--container-disk-in-gb` | コンテナディスク（既定20） |
-| `--stop-after` | **自動停止 datetime（課金漏れ最終防衛）** 例 `2026-06-01T09:00:00Z` |
-| `--terminate-after` | 自動削除 datetime |
+| ~~`--stop-after`~~ / ~~`--terminate-after`~~ | **廃止済み（2026-09-24実機確認、runpodctl 2.14.0）**。指定すると `unknown flag` で `pod create` 自体が失敗する。CLI側の自動停止フラグは無くなったため、teardownは完全に呼び出し側の責任（§8の代替案参照） |
 | `--compliance` | ホストを規約で絞る `HIPAA,SOC_2_TYPE_2`（医療/機密データ時） |
 | `--data-center-ids` | DC指定（Volumeと一致必須） |
 
@@ -165,8 +164,9 @@ runpodctl pod create --name train \
   --gpu-id "NVIDIA A100 80GB PCIe" --cloud-type SECURE \
   --network-volume-id <VOL_ID> --volume-mount-path /workspace \
   --template-id runpod-torch-v280 \
-  --container-disk-in-gb 40 \
-  --stop-after $(date -u -d '+8 hours' +%Y-%m-%dT%H:%M:%SZ)
+  --container-disk-in-gb 40
+  # ★--stop-after は廃止済み（2026-09-24確認）。自動停止はpod内スクリプトのtrap or
+  #   ローカルからの監視+明示stopで代替する（§8参照）
 runpodctl pod list                            # ID・状態（RUNNINGになるまで数十秒）
 runpodctl ssh info <POD_ID>                   # ssh接続情報
 # ... 作業 ...
@@ -241,7 +241,13 @@ pod に鍵を渡す方法は2通り。**機密度の高い鍵は RunPod Secrets 
 ## 8. コスト管理（課金漏れを物理的に防ぐ）
 
 - 課金は **per-second**（Network Volume のみ時間/月単位）
-- **二重の自動停止**: `--stop-after <datetime>`（pod側） + `startup.sh` の `trap '... pod stop' EXIT`（学習終了/中断時）
+- ⚠️ **`--stop-after`/`--terminate-after`はCLIから廃止済み（2026-09-24確認, runpodctl 2.14.0）**。
+  pod側の自動停止フラグが無いため、以下のいずれかで代替する:
+  1. `startup.sh` の `trap '... pod stop' EXIT`（学習スクリプトが正常終了/中断した場合のみ効く。
+     Web Terminalで放置した場合は効かない）
+  2. **ローカルから定期的に状態を見て明示的に `pod stop`**（このClaude Codeセッションで採用した方式。
+     Kaggle kernel監視と同じポーリングパターンで代替可能。すべての運用パターンをカバーできる
+     唯一の方式のため、こちらを主とし①は保険として併用推奨）
 - `runpodctl me` の `spendLimit` でアカウント上限、コンソールで自動チャージ閾値を設定
 - spot的に使うなら ckpt 30分ごと + Network Volume 保存（中断時 SIGTERM 5秒 → ckpt再開で復帰）
 
@@ -257,6 +263,21 @@ pod に鍵を渡す方法は2通り。**機密度の高い鍵は RunPod Secrets 
 - **残高ゼロで Volume 削除**: 自動チャージ必須
 - **WSL から GitHub/pod への SSH**: `~/.ssh` が 9p drvfs(metadata無)だと chmod が効かず 777 → OpenSSH が拒否。**push/接続は Windows 側 or runpodctl(HTTPS) or Web Terminal で回避**。直すなら `/etc/wsl.conf` に `[automount]\noptions=metadata` → `wsl --shutdown`
 - **`gpu list` 結果は時々変動**: 同じ呼び出しでも在庫により出る種別が変わる
+- **`runpodctl me` の `currentSpendPerHr` は pod削除後もしばらく（実機確認では数分以上）古い値のまま**（2026-09-25確認）。
+  pod停止・削除が本当に完了したかは `currentSpendPerHr` を見ず、**`pod list`（空 = 稼働pod無し）と
+  `billing pods`（実際の課金レコード）で確認する**こと。`me`だけ見て「課金が続いている」と誤解しない
+- **`kaggle datasets download -d <slug>`（bulk zip）が特定のdatasetでだけ404になることがある**
+  （2026-09-25実機確認。`datasets files`/`datasets status`は正常"ready"を返すのに、bulk downloadだけ
+  一貫して404。原因不明、再作成でも改善しないケースあり）。個別ファイル指定
+  `kaggle datasets download -d <slug> -f <filename> -p <dir>` なら成功するため、Kaggle datasetから
+  複数ファイルを取得するスクリプトは**最初から個別ファイル方式にしておく**方が事故が少ない
+- **`--stop-after`/`--terminate-after` は廃止済み（2026-09-24実機確認, runpodctl 2.14.0）**: 指定すると
+  `{"error":"unknown flag: --stop-after",...}` で `pod create` 自体が失敗する（課金前にコケるので実害は無い）。
+  README初版はv2.3.0時点の仕様で書かれていたため、CLIのアップデートで機能ごと削除された。
+  §8の代替案（ローカルからの明示stop）を使うこと
+- **指定GPUの在庫切れは `pod create` が `graphql error: There are no longer any instances available...`
+  で失敗する**（例: `NVIDIA RTX A5000` が在庫none）。`runpodctl gpu list` の `stockStatus` を見て
+  "High"/"Medium" の候補にフォールバックする（実地では `NVIDIA GeForce RTX 4090` が安定してHigh在庫）
 
 ---
 
