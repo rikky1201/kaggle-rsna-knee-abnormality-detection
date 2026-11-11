@@ -1,0 +1,13 @@
+{
+  "id": "rikky1201/rsna-knee-v5-expa02-resnet34-finetune-submission",
+  "title": "RSNA knee v5 expA02 resnet34 finetune submission",
+  "code_file": "inference_notebook_resnet34.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": ["rikky1201/rsna-knee-dinov2-baseline-assets"],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}
