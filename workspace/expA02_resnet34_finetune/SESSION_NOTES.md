@@ -86,7 +86,30 @@ workspace/expA02_resnet34_finetune/
 - train_lossは単調減少だが、val macro AUC(n=13の小標本、CIが広い)は0.543→0.561→0.469と一貫した改善トレンドが見えていない。小標本ノイズの可能性が高いが要注視
 - 現在のbest.ckptはepoch1時点の重み
 
-## 6. 次のステップ
-- [ ] **（来週GPU予算リセット後、最優先）** `kaggle_train/`で`bash upload.sh`を実行しepoch3を再開（`kernel-metadata.json`の`kernel_sources`は既に自己参照設定済みなので変更不要）
-- [ ] epoch3以降もval AUC推移を注視。trainとvalの乖離が続くなら学習率・epoch数の見直しを検討
-- [ ] 目標epoch数7（or 予算の許す範囲）に達したら、expA01ベースライン（CV 0.7375, LB 0.688）と比較して採用可否を判断
+## 6. RunPod移行 + epoch3〜6実行（2026-09-24〜25）
+
+Kaggle週間GPU予算切れを機にRunPodへ移行（詳細設計・ハマりどころは`daily_reports/20260924.md`参照）。
+生DICOM転送は1.36TBで非現実的と判明したため、前処理済み画像キャッシュ（224x224 uint8, slice cap16,
+`kaggle_preprocess_cache/`で生成）を8個のKaggle datasetに分割保存し、RunPod pod（RTX4090）にダウンロードして
+学習する方式に変更。`runpod_train/train_runpod.py`（DICOM I/O無し、複数epoch連続実行）を新規実装。
+
+**結果**:
+| epoch | 環境 | val macro AUC | train_loss |
+|---|---|---|---|
+| 0 | Kaggle T4 | 0.5428 | 11.63 |
+| 1 | Kaggle T4 | 0.5609 | 10.42 |
+| 2 | Kaggle T4 | 0.4685 | 10.28 |
+| 3 | RunPod 4090 | 0.5954 | 10.09 |
+| 4 | RunPod 4090 | 0.5872 | 9.80 |
+| 5 | RunPod 4090 | 0.6035 | 9.55 |
+| **6** | RunPod 4090 | **0.6137（best）** | **9.34** |
+
+- 1epoch実測: 約5.3分（キャッシュ版, RTX4090）。Kaggle DICOM版(4.8〜5.8h)から桁違いに高速化
+- epoch3以降はtrain_loss単調減少 + val macro AUC上昇トレンドが確認できた（epoch0-2の乱高下から改善）
+- 4epoch(3〜6)の実コスト: $0.30、所要23分
+- チェックポイントは`rikky1201/resnet34-finetune-runpod-ckpt`（Kaggle dataset）に永続化済み
+
+## 7. 次のステップ
+- [ ] （ユーザー判断待ち）コストが極めて低いため、さらにepochを重ねて収束を見るか判断
+- [ ] baseline（CV 0.7375, LB 0.688）に到達/超過したらLB提出可否を判断
+- [ ] 再開する場合: `resnet34-finetune-runpod-ckpt`データセットのlast.ckptを起点に、同じ`runpod_train/`一式でpodを再起動するだけでよい（新しい前処理キャッシュ生成は不要、既に完成済み）

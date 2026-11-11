@@ -1,0 +1,13 @@
+{
+  "id": "rikky1201/resnet34-preprocess-cache",
+  "title": "ResNet34 preprocess cache",
+  "code_file": "preprocess_cache_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": ["rikky1201/rsna-knee-dinov2-baseline-assets"],
+  "competition_sources": ["rsna-knee-abnormality-detection"],
+  "kernel_sources": []
+}

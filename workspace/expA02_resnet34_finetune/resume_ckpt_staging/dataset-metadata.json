@@ -1,0 +1,11 @@
+{
+  "title": "ResNet34 finetune resume epoch2",
+  "id": "rikky1201/resnet34-finetune-resume-epoch2",
+  "subtitle": "Epoch2 checkpoint to resume ResNet34 finetune on RunPod",
+  "description": "last.ckpt from expA02 Kaggle training run, epoch2 (val macro AUC 0.4685). Used to resume training epoch3+ on RunPod.",
+  "isPrivate": true,
+  "licenses": [{"name": "CC0-1.0"}],
+  "keywords": [],
+  "collaborators": [],
+  "data": []
+}
